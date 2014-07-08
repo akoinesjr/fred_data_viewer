@@ -29,3 +29,4 @@ end
 get '/data/:id' do
  erb :data
 end
+
