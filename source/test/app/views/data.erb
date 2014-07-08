@@ -1,0 +1,21 @@
+<html>
+
+<head>
+</head>
+
+<body>
+
+<h3>FRED Data Viewer</h3>
+<% data=JSON.parse(Datapoint.where(dataset_id: params[:id]).to_json) %>
+<p>Dataset ID: <%= params[:id] %></p>
+<p>Dataset Code: <%= Dataset.find(params[:id])['name'] %> </p>
+<p>Date - Value</p>
+<% data.each do |entry| %>
+<% entry=entry['datapoint'] %>
+
+<p><%= entry['date'] + " - " + entry['value'] %></p>
+<% end %>
+
+
+</body>
+</html>
