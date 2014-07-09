@@ -1,5 +1,5 @@
 body{
-  /*background-image: url(http://files.shroomery.org/cms/ileaveonmyown.gif);*/cd
+  /*background-image: url(http://files.shroomery.org/cms/ileaveonmyown.gif);*/
 }
 .container {
     margin: 20px auto;
@@ -29,4 +29,15 @@ th {
 	margin:10px auto;
 	display:inline-block;
 	padding:5px;
+ }
+
+ nav a{
+  background-color: lightgrey;
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid black;
+ }
+
+ nav{
+  height: 80px;
  }
