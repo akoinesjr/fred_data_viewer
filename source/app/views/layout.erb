@@ -15,9 +15,20 @@
   <title></title>
 </head>
 <body>
-  <nav>
-    <a href='/'>Home</a>
-  </nav>
+
+  <header class="header">
+      <h1 class="logo"><a href="/">FRED® Data Viewer</a></h1>
+      <ul class="nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+        <li><a href="#">Link 4</a></li>
+      </ul>
+    </header>
+
   <%= yield %>
+  <footer class="footer">
+    <p>This is the footer.</p>
+  </footer>
 </body>
 </html>
