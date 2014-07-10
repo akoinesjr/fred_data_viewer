@@ -30,8 +30,10 @@ $(function () {
                 x: -20
             },
             xAxis: {
-                categories: <%= dates_arr %>//[, 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                categories: <%= dates_arr %>,//[, 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                     //'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                labels: { step: 8 }
+
             },
             yAxis: {
                 title: {
