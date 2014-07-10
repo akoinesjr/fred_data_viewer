@@ -1,0 +1,73 @@
+
+
+
+<% series_id = params[:series_id]%>
+
+<% url = URI.parse("http://api.stlouisfed.org/fred/series/observations?series_id=#{series_id}&api_key=foobar&file_type=json")
+    req = Net::HTTP::Get.new(url.to_s)
+    data = Net::HTTP.start(url.host, url.port) {|http|
+     http.request(req)
+    } %>
+
+<% data=JSON.parse(data.body)['observations'] %>
+<p class='intro'>
+    Dataset ID: <%= series_id %><br>
+    Realtime Start: <%= data[0]['realtime_start'] %><br>
+    Realtime End: <%= data[0]['realtime_end'] %><br>
+</p>
+<% dates_arr=[] %>
+<% values_arr=[] %>
+<% data.each do |entry| %>
+  <% dates_arr << entry['date'] %>
+  <% values_arr << entry['value'].to_f %>
+<% end %>
+
+<div id="container" style="width:100%; height:400px;"></div>
+
+<script>
+$(function () {
+    $('#container').highcharts({
+            title: {
+                text: 'Your Graph',
+                x: -20 //center
+            },
+            subtitle: {
+                text: 'St. Louis Federal Reserve',
+                x: -20
+            },
+            xAxis: {
+                categories: <%= dates_arr %>,//[, 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                    //'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                labels: { step: 12 }
+
+            },
+            yAxis: {
+                title: {
+                    text: 'Value'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: ''
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: 'Value',
+                data: <%= values_arr %>//[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+            }//, {
+             //   name: 'New York',
+             //   data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]}
+            ]
+        });
+    });
+
+</script>

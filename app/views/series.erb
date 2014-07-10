@@ -12,7 +12,7 @@
 <% series=series['seriess']['series'] %>
 <% series.each do |entry| %>
 <div class='entry'>
-  ID: <%= entry['id'] %><br>
+  ID: <%= series_id=entry['id'] %><br>
   Realtime Start:<%= entry['realtime_start'] %><br>
   Realtime End:<%= entry['realtime_end'] %><br>
   Title:<%= entry['title'] %><br>
@@ -23,6 +23,12 @@
   Seasonal Adjustment: <%=  entry['seasonal_adjustment'] %><br>
   Last Updated: <%=  entry['last_updated'] %><br>
   Popularity: <%=  entry['popularity'] %><br>
+
+    <form id='view_series' method='get' action='/releases/<%=id%>/series/<%=series_id%>'>
+    <input type='submit' value='View Series Data'>
+  </form>
+
+
 </div>
 <% end %>
 

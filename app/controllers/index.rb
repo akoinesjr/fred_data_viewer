@@ -32,8 +32,10 @@ get '/releases' do
   erb :releases
 end
 
-get '/releases/series/:id' do
+get '/releases/:id/series' do
   erb :series
 end
 
-
+get '/releases/:id/series/:series_id' do
+  erb :series_data
+end
