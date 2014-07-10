@@ -1,0 +1,30 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+<% releases = HTTParty.get("http://api.stlouisfed.org/fred/releases?api_key=foobar") %>
+<%  releases=releases['releases']['release'] %>
+
+<p class='intro'>All releases of economic data:</p>
+<% releases.each do |entry| %>
+<div class='entry'>
+  Name: <%= name = entry['name'] %><br>
+  ID: <%= id = entry['id'] %><br>
+  Realtime Start:<%= realtime_start = entry['realtime_start'] %><br>
+  Realtime End:<%= realtime_end = entry['realtime_end'] %><br>
+  Link: <%= link = entry['link'] %><br>
+
+  <form id='select_series' method='get' action='/releases/series/<%=id%>'>
+    <input type='submit' value='View all series'>
+  </form>
+
+</div>
+<% end %>
+
+
+</body>
+</html>

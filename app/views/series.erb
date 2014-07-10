@@ -1,0 +1,32 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+<p class='intro'>All series for release ID: <%= params[:id] %></p>
+<% id = params[:id] %>
+<% series = HTTParty.get("http://api.stlouisfed.org/fred/release/series?release_id=#{id}&api_key=foobar") %>
+<% series=series['seriess']['series'] %>
+<% series.each do |entry| %>
+<div class='entry'>
+  ID: <%= entry['id'] %><br>
+  Realtime Start:<%= entry['realtime_start'] %><br>
+  Realtime End:<%= entry['realtime_end'] %><br>
+  Title:<%= entry['title'] %><br>
+  Observation Start: <%=  entry['observation_start'] %><br>
+  Observation End: <%=  entry['observation_end'] %><br>
+  Frequency: <%=  entry['frequency'] %><br>
+  Units: <%=  entry['units'] %><br>
+  Seasonal Adjustment: <%=  entry['seasonal_adjustment'] %><br>
+  Last Updated: <%=  entry['last_updated'] %><br>
+  Popularity: <%=  entry['popularity'] %><br>
+</div>
+<% end %>
+
+
+
+</body>
+</html>

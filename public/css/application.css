@@ -78,3 +78,13 @@ th {
   border-radius: 10px;
   padding: 5px;
 }
+
+.entry{
+  border: 2px solid;
+  margin: 10px;
+  padding: 10px;
+}
+.intro{
+  margin: 10px;
+  padding: 10px;
+}

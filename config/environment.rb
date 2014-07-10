@@ -22,7 +22,8 @@ require 'erb'
 
 require 'json'
 require 'net/http'
-
+require 'httparty'
+require 'awesome_print'
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))

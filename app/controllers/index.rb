@@ -28,4 +28,12 @@ get '/data/:id' do
  erb :data
 end
 
+get '/releases' do
+  erb :releases
+end
+
+get '/releases/series/:id' do
+  erb :series
+end
+
 

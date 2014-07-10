@@ -18,3 +18,6 @@ gem 'rake'
 
 gem 'faker'
 gem 'rspec'
+
+gem 'httparty'
+gem 'awesome_print'
