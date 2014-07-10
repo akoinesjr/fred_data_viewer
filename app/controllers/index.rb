@@ -9,7 +9,7 @@ post '/' do
 #  unless Dataset.where('name = ?', dataset_code)
     new_dataset=Dataset.create(:name => dataset_code)
 
-    url = URI.parse("http://api.stlouisfed.org/fred/series/observations?series_id=#{dataset_code}&api_key=foobar&file_type=json")
+    url = URI.parse("http://api.stlouisfed.org/fred/series/observations?series_id=#{dataset_code}&api_key=#{ENV["API_KEY"]}&file_type=json")
     req = Net::HTTP::Get.new(url.to_s)
     res = Net::HTTP.start(url.host, url.port) {|http|
      http.request(req)
@@ -38,4 +38,8 @@ end
 
 get '/releases/:id/series/:series_id' do
   erb :series_data
+end
+
+get '/sources' do
+  erb :sources
 end

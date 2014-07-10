@@ -1,0 +1,30 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+<% sources = HTTParty.get("http://api.stlouisfed.org/fred/sources?api_key=#{ENV["API_KEY"]}") %>
+<% sources = sources['sources']['source'] %>
+
+<p class='intro'>All sources of economic data:</p>
+<% sources.each do |entry| %>
+<div class='entry'>
+  Name: <%= name = entry['name'] %><br>
+  ID: <%= id = entry['id'] %><br>
+  Realtime Start:<%= realtime_start = entry['realtime_start'] %><br>
+  Realtime End:<%= realtime_end = entry['realtime_end'] %><br>
+  Link: <%= link = entry['link'] %><br>
+
+  <form id='select_series' method='get' action='/sources/<%=id%>/'>
+    <input type='submit' value='View all releases for this source'>
+  </form>
+
+</div>
+<% end %>
+
+
+</body>
+</html>

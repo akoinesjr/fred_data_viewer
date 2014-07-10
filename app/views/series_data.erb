@@ -3,7 +3,7 @@
 
 <% series_id = params[:series_id]%>
 
-<% url = URI.parse("http://api.stlouisfed.org/fred/series/observations?series_id=#{series_id}&api_key=foobar&file_type=json")
+<% url = URI.parse("http://api.stlouisfed.org/fred/series/observations?series_id=#{series_id}&api_key=#{ENV["API_KEY"]}&file_type=json")
     req = Net::HTTP::Get.new(url.to_s)
     data = Net::HTTP.start(url.host, url.port) {|http|
      http.request(req)

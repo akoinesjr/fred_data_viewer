@@ -6,7 +6,7 @@
 
 <body>
 
-<% releases = HTTParty.get("http://api.stlouisfed.org/fred/releases?api_key=foobar") %>
+<% releases = HTTParty.get("http://api.stlouisfed.org/fred/releases?api_key=#{ENV["API_KEY"]}") %>
 <%  releases=releases['releases']['release'] %>
 
 <p class='intro'>All releases of economic data:</p>
