@@ -78,3 +78,7 @@ delete '/sessions/:id' do
   redirect to '/'
   # sign-out -- invoked
 end
+
+get '/user_datasets' do
+ erb :user_datasets
+end

@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :user_datasets
+  has_many :datasets, :through => :user_datasets
     # users.password_hash in the database is a :string
   include BCrypt
 

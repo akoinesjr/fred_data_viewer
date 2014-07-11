@@ -1,0 +1,12 @@
+You haven't added any datasets
+<% if current_user %>
+<%= current_user.name %>!
+<% end %>
+
+User ID:<%= id=current_user.id %>
+
+Datasets:<% datasets=current_user.datasets%>
+         <% datasets.each do |dataset| %>
+         <%= dataset.name %>
+         <% end %>
+
