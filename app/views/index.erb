@@ -5,7 +5,7 @@
 </head>
 
 <body class='main-body'>
-<% if current_user %><h3>Hi, <%= current_user.name %>!</h3><% end %>
+<% if current_user %>Hi, <%=current_user.name%> <% end %>
 <h3>Welcome to the FRED® Data Viewer!</h3>
 
 <p>Please choose a dataset from the dropdown menu below, or browse through the database using the navigation links at the top of the page.</p>

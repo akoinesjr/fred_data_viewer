@@ -1,7 +1,6 @@
 enable :sessions
 
 get '/' do
-  @users=User.all
   erb :index
 end
 
@@ -74,4 +73,10 @@ post '/sessions' do
    erb :sign_in
  end
 
+end
+
+delete '/sessions/:id' do
+  session.clear
+  redirect to '/'
+  # sign-out -- invoked
 end

@@ -19,7 +19,14 @@
   <header class="header group">
       <h1 class="logo"><a href="/">FRED® Data Viewer</a></h1>
       <ul class="nav">
+        <% unless current_user %>
         <li><a href="/sessions/new">Log In</a></li>
+        <% else %>
+        <li> <form id="sign-out" action="/sessions/<%= current_user.id %>" method="post">
+            <input name="_method" type="hidden" value="delete" />
+            <input type="submit" value="Sign Out">
+          </form></li>
+        <% end %>
         <li><a href="/sources">Sources</a></li>
         <li><a href="/releases">Releases</a></li>
         <li><a href="#">#####</a></li>
