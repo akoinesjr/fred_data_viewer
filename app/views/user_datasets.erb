@@ -1,14 +1,22 @@
-You haven't added any datasets
-<% if current_user %>
-<%= current_user.name %>!
-<% end %>
-
-User ID:<%= id=current_user.id %>
-
-Datasets:<% datasets=current_user.datasets%>
+<%id=current_user.id %>
+<div class='intro'>
+  Your Datasets:<% datasets=current_user.datasets%>
+</div>
   <% datasets.each do |dataset| %>
-  <%= dataset.name %>
+  <div class='entry'>
+    <%= dataset.name %>
+    <form id='select_data' method='get' action='/user/<%=id%>/series/<%=dataset.name%>'>
+      <input type='submit' value='View Data'>
+    </form>
+    </div>
   <% end %>
 
+
+<% unless datasets %>
+  You haven't added any datasets
+  <% if current_user %>
+  <%= current_user.name %>!
+  <% end %>
+<% end %>
 
 
