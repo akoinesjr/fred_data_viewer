@@ -30,7 +30,9 @@
         <% end %>
         <li><a href="/sources">Sources</a></li>
         <li><a href="/releases">Releases</a></li>
-        <li><a href="#">#####</a></li>
+        <% if current_user %>
+        <li><a href="/user_datasets">Your Datasets</a></li>
+        <% end %>
 
       </ul>
     </header>
