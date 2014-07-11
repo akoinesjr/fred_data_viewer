@@ -22,9 +22,10 @@
         <% unless current_user %>
         <li><a href="/sessions/new">Log In</a></li>
         <% else %>
-        <li> <form id="sign-out" action="/sessions/<%= current_user.id %>" method="post">
+        <li>
+          <form id="sign-out" action="/sessions/<%= current_user.id %>" method="post">
             <input name="_method" type="hidden" value="delete" />
-            <input type="submit" value="Sign Out">
+            <a onclick="document.getElementById('sign-out').submit();">Log Out</a>
           </form></li>
         <% end %>
         <li><a href="/sources">Sources</a></li>
