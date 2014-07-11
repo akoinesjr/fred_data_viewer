@@ -5,21 +5,47 @@
 </head>
 
 <body class='main-body'>
-
+<% if current_user %><h3>Hi, <%= current_user.name %>!</h3><% end %>
 <h3>Welcome to the FRED® Data Viewer!</h3>
 
 <p>Please choose a dataset from the dropdown menu below, or browse through the database using the navigation links at the top of the page.</p>
 
-<form id='select_data' method='post' action='/'>
-  <select name='dataset_code' class="dropdown">
-    <option value='UNRATE'>Civilian Unemployment Rate</option>
-    <option value='DGS10'>10-Year Treasury Constant Maturity Rate</option>
-    <option value='CPIAUCSL'>Consumer Price Index for All Urban Consumers: All Items</option>
-    <option value='GDPC1'>Real Gross Domestic Product</option>
-    <option value='U6RATENSA'>Total unemployed, plus all marginally attached workers plus total employed part time for economic reasons</option>
-  </select>
-  <input type='submit' value='Submit'>
-</form>
+<div>
+  <form id='select_data' method='post' action='/'>
+    <select name='dataset_code' class="dropdown">
+      <option value='UNRATE'>Civilian Unemployment Rate</option>
+      <option value='DGS10'>10-Year Treasury Constant Maturity Rate</option>
+      <option value='CPIAUCSL'>Consumer Price Index for All Urban Consumers: All Items</option>
+      <option value='GDPC1'>Real Gross Domestic Product</option>
+      <option value='U6RATENSA'>Total unemployed, plus all marginally attached workers plus total employed part time for economic reasons</option>
+    </select>
+    <input type='submit' value='Submit'>
+  </form>
+</div>
+<hr>
+<div>
+    <h3>Sign Up</h3>
+
+  <form id="sign-up" method="post" action="/sign_up">
+    <label class="label" for="name">Name</label>
+    <input type="text" name="name" placeholder="e.g., joe" >
+    <br>
+
+    <label class="label" for="email">Email</label>
+    <input type="email" name="email" placeholder="e.g., me@example.com" >
+    <br>
+
+    <label class="label" for="password">Password</label>
+    <input type="password" name="password" placeholder="8 or more characters">
+    <br>
+
+    <div class="submit"><input type="submit" value="Sign Up"></div>
+  </form>
+
+</div>
+
+
+
 
 <p>This application was built using the <a href="http://api.stlouisfed.org/docs/fred/">FRED® API</a>, which allows users to access the FRED (Federal Reserve Economic Data) and ALFRED (Archival Federal Reserve Economic Data) databases hosted by the <a href="http://research.stlouisfed.org/">Economic Research Division</a> of the <a href="http://stlouisfed.org/">Federal Reserve Bank of St. Louis</a>.</p>
 

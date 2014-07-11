@@ -1,9 +1,12 @@
-get '/' do
+enable :sessions
 
+get '/' do
+  @users=User.all
   erb :index
 end
 
 post '/' do
+
   dataset_code=params[:dataset_code]
 
 #  unless Dataset.where('name = ?', dataset_code)
@@ -42,4 +45,33 @@ end
 
 get '/sources' do
   erb :sources
+end
+
+post '/sign_up' do
+  user_info={:name=>params[:name],
+             :email=>params[:email],
+             :password_hash=>BCrypt::Password.create(params[:password])}
+  user=User.create(user_info)
+  session[:user_id]=user.id
+
+  redirect to '/sessions/new'
+
+end
+
+get '/sessions/new' do
+  erb :sign_in
+end
+
+post '/sessions' do
+ @email = params[:email]
+ @password = params[:password]
+
+ @user = User.where('email = ?', @email).first
+ if @user && @user.password == @password
+   session[:user_id]=@user.id
+   redirect to '/'
+ else
+   erb :sign_in
+ end
+
 end

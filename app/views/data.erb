@@ -1,5 +1,3 @@
-
-
 <h3>FRED Data Viewer</h3>
 <% data=JSON.parse(Datapoint.where(dataset_id: params[:id]).to_json) %>
 <p>Dataset ID: <%= params[:id] %></p>

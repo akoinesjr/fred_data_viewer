@@ -23,3 +23,5 @@ gem 'httparty'
 gem 'awesome_print'
 
 gem 'dotenv'
+
+gem 'bcrypt'
