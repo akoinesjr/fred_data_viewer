@@ -22,6 +22,12 @@
   <% values_arr << entry['value'].to_f %>
 <% end %>
 
+<% if current_user %>
+<form id='add_dataset' method='post' action='/add_dataset/<%=series_id%>'>
+<input type='submit' value='Add to your datasets.'>
+</form>
+<% end %>
+
 <div id="container" style="width:100%; height:400px;"></div>
 
 <script>

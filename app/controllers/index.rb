@@ -82,3 +82,14 @@ end
 get '/user_datasets' do
  erb :user_datasets
 end
+
+post '/add_dataset/:id' do
+  id=params[:id]
+  test=Dataset.create(:name=>id)
+  test2=UserDataset.create(:user_id=>current_user.id.to_i, :dataset_id=>test.id)
+  puts test.inspect
+  puts test2.inspect
+  puts current_user.inspect
+  puts Dataset.all.inspect
+  puts UserDataset.all.inspect
+end
